@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
+# from keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import streamlit as st
 import nltk
@@ -29,4 +30,14 @@ vectors = converter(text)
 
 model = load_model(r"C:\Projects\Plagarism-Detector\models\LSTM_model.h5")
 
+vectors = converter(text)
 
+result = model.predict(vectors)
+if result[0][0] >= 0.5:
+    st.write("Plagarized")
+else:
+    st.write("Original")
+
+
+if __name__ == "__main__":
+    print("ok")
