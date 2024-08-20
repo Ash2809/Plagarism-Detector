@@ -5,6 +5,7 @@ from keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import streamlit as st
 import nltk
+import string
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 
@@ -26,6 +27,6 @@ def converter(text):
 text = st.text_input("Enter the sentence: ")
 vectors = converter(text)
 
-model = load_model()
+model = load_model(r"C:\Projects\Plagarism-Detector\models\LSTM_model.h5")
 
 
